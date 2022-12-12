@@ -16,6 +16,10 @@ export class AppView {
         const values = data?.sources ? data?.sources : [];
         this.sources.draw(values);
     }
+
+    toggleSelect(selectEl) {
+        selectEl.classList.toggle('active');
+    }
 }
 
 export default AppView;

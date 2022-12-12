@@ -8,10 +8,19 @@ class App {
     }
 
     start() {
-        document
-            .querySelector('.sources')
-            .addEventListener('click', (e) => this.controller.getNews(e, (data) => this.view.drawNews(data)));
+        const sourses = document.querySelector('.sources');
+        sourses.addEventListener('click', (e) =>
+            this.controller.getNews(e, (data) => {
+                this.view.toggleSelect(sourses);
+                this.view.drawNews(data);
+            })
+        );
         this.controller.getSources((data) => this.view.drawSources(data));
+
+        const selectBody = document.querySelector('.select__header');
+        selectBody.addEventListener('click', () => {
+            this.view.toggleSelect(sourses);
+        });
     }
 }
 
